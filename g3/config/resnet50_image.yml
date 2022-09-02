@@ -1,0 +1,44 @@
+data_dir: .
+out_dir: weights
+wandb_dir: geolocation
+seed: 128
+model_params:
+  arch: resnet50
+  setting: image
+  name: ${model_params.arch}_${model_params.setting}
+  weights: ${data_dir}/weights/isn_epoch=014-val_loss=18.4833.ckpt
+  batch_size: 128
+  val_check_interval: 1000
+  optim:
+    params:
+      lr: 1e-2
+      momentum: 0.9
+      weight_decay: 1e-4
+  scheduler:
+    params:
+      gamma: 0.5
+      milestones: [4, 8, 12, 13, 14, 15]
+  # ========================
+  #       Data Params
+  # ========================
+  loss_weight: ${data_dir}/dataset/loss_weight/countries.json
+  partitionings:
+    ptype: default
+    shortnames: [countries]
+    files:
+      - ${data_dir}/dataset/s2_cells/countries.csv
+  skiprows: 0
+  msgpack_train_dir: ${data_dir}/dataset/train/msgpack
+  msgpack_val_dir: ${data_dir}/dataset/val/msgpack
+  train_meta_path: ${data_dir}/dataset/train/train.csv
+  val_meta_path: ${data_dir}/dataset/val/val.csv
+  train_label_mapping: ${data_dir}/dataset/train/label_mapping/countries.json
+  val_label_mapping: ${data_dir}/dataset/val/label_mapping/countries.json
+  key_img_id: id
+  key_img_encoded: image
+  num_workers_per_loader: 6
+trainer_params:
+  gpus: 1
+  max_epochs: 15
+  precision: 16
+  reload_dataloaders_every_n_epochs: 1

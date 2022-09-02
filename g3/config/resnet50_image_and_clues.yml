@@ -1,0 +1,26 @@
+includes:
+  - ./resnet50_image.yml
+
+model_params:
+  arch: resnet50
+  setting: image_and_clues
+  name: ${model_params.arch}_${model_params.setting}
+  optim:
+    params:
+      attention_lr: 1e-3
+      lr: 1e-2
+      momentum: 0.9
+      weight_decay: 1e-4
+  # Attention over Guidebook
+  attn_beta: 1.0
+  attn_image_size: 768
+  attn_text_size: 768
+  text_features_file: ${data_dir}/dataset/features/guidebook_roberta_base.pkl
+  image_features_file: ${data_dir}/dataset/features/streetview_clip_rn50x16.pkl
+  attn_layer_norm_type: "sigmoid"
+  attn_input_norm_type: "batch_norm"
+  # Attention Loss
+  text_labels_file: ${data_dir}/dataset/pseudo_labels/countries.json
+  attn_loss_weight: 50
+  attn_loss_alpha: 0.75
+  attn_loss_type: bce

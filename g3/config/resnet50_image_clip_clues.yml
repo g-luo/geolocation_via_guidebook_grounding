@@ -1,0 +1,7 @@
+includes:
+  - ./resnet50_image_and_clues.yml
+
+model_params:
+  arch: resnet50
+  setting: image_clip_clues
+  name: ${model_params.arch}_${model_params.setting}

@@ -1,0 +1,21 @@
+name: g3
+channels:
+  - conda-forge
+  - pytorch
+dependencies:
+  - python=3.8
+  - msgpack=1.0.0
+  - pandas=1.1.5
+  - pyyaml=5.4.1
+  - tqdm=4.50
+  - pytorch=1.9
+  - torchvision=0.8.2
+  - pytorch-lightning=1.6.1
+  - pip
+  - pip:
+    - omegaconf==2.1.0
+    - s2sphere==0.2.5
+    - scipy==1.7.3
+    - tqdm==4.49.0
+    - wandb==0.12.17
+    - pillow

@@ -1,0 +1,9 @@
+includes:
+  - ./resnet50_image.yml
+
+model_params:
+  arch: resnet50
+  setting: image_and_clip
+  name: ${model_params.arch}_${model_params.setting}
+  image_features_file: ${data_dir}/dataset/features/streetview_clip_rn50x16.pkl
+  attn_image_size: 768
