@@ -6,7 +6,7 @@ This repository contains the code accompanying our paper, which proposes a new m
 
 ## Geolocation via Guidebook Grounding Dataset
 
-The StreetView panorama ids and guidebook are available for download [here](http://geolocation_via_guidebook_grounding.berkeleyvision.org). You can download all necessary files by running `./scripts/get_data_files.sh`.
+The StreetView panorama ids and guidebook are available for download [here](https://huggingface.co/g-luo/geolocation-via-guidebook-grounding). You can download all necessary files by running `./scripts/get_data_files.sh`.
 
 In our dataset `train/val/test` contain the StreetView panorama ids, `guidebook.json` contains the guidebook text, `s2_cells/countries.csv` contains the mapping from our predicted class labels to the human-readable country name. From the panorama ids you can download the panoramas then cut them to images, which is described further in the section "Getting StreetView Images".
 
